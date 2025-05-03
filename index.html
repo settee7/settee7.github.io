@@ -10,17 +10,20 @@
       font-family: Tahoma, sans-serif;
       background-image: url("sfondo-desktop.jpg");
       background-size: cover;
+      background-repeat: no-repeat;
+      min-height: 100vh;
       background-position: center;
     }
 
     @media (max-width: 768px) {
       body {
-    background-image: url("sfondo-mobile.jpg");
+      background-image: url("sfondo-mobile.jpg");
+      background-repeat: repeat;
     }
   }
 
     header{
-      color: black;
+      color: white;
       text-align: center;
       padding: 1em;
     }
@@ -32,6 +35,7 @@
     }
 
     p{
+      color: white;
       padding-left: 5%;
       padding-right: 5%;
       text-align: center;
@@ -62,28 +66,29 @@
   
 
   <!-- TIMER -->
-  <center><div id="timer"></div></center>
+   <div id="timer" style="color: white; text-align: center;"></div>
 
-  <script>
-    const startDate = new Date("2023-05-20T16:00:00Z"); // orario in UTC
-    const timerElement = document.getElementById('timer');
-
-    function updateTimer() {
-      const now = new Date();
-      const diff = now - startDate;
-
-      const seconds = Math.floor(diff / 1000) % 60;
-      const minutes = Math.floor(diff / (1000 * 60)) % 60;
-      const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-      timerElement.textContent =
-        `${days} giorni, ${hours} ore, ${minutes} minuti, ${seconds} secondi`;
-    }
-
-    updateTimer(); // chiamata immediata
-    setInterval(updateTimer, 1000); // aggiorna ogni secondo
-  </script>
+    <script>
+      const startDate = new Date("2023-05-20T16:00:00"); // orario in UTC
+      const timerElement = document.getElementById('timer');
+  
+      function updateTimer() {
+        const now = new Date();
+        const diff = now - startDate;
+  
+        const seconds = Math.floor(diff / 1000) % 60;
+        const minutes = Math.floor(diff / (1000 * 60)) % 60;
+        const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  
+        timerElement.textContent =
+          `${days} giorni, ${hours} ore, ${minutes} minuti, ${seconds} secondi`;
+      }
+  
+      updateTimer(); // chiamata immediata
+      setInterval(updateTimer, 1000); // aggiorna ogni secondo
+    </script>
+  
 
 
 <!--<div class="container">
