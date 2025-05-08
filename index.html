@@ -65,6 +65,32 @@
   <!-- HTML -->
 
   <body>
+
+    <!-- PIN -->
+
+    <div id="pin-overlay" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-family: Tahoma, sans-serif;
+">
+      <h2>Inserisci il PIN per accedere 🎁</h2>
+      <input type="password" id="pin-input" placeholder="PIN"
+        style="padding: 10px; font-size: 18px;">
+      <button onclick="checkPIN()"
+        style="margin-top: 10px; padding: 10px 20px;">Accedi</button>
+      <p id="error-msg" style="color: red; display: none;">PIN errato,
+        riprova.</p>
+    </div>
+
     <header>
       <h1>TANTI AUGURI AMORE MIO💗💗💗</h1>
     </header>
@@ -102,13 +128,12 @@
     <p style="text-align: right; padding-right: 10%;"> <i>Ti amo, Davide.</i>
     </p>
     <br><br><br><br><br><br><br><br>
-    
 
     <img src="crazy.jpg" alt="crazy boy">
     <p> visto che te lo dimentichi😝 stiamo assieme da: <br></p>
-  <!-- TIMER -->
+    <!-- TIMER -->
     <div id="timer" style="color: white; text-align: center;"></div>
-    
+
     <script>
       const startDate = new Date("2023-05-20T16:00:00");
     
@@ -157,14 +182,23 @@
       updateTimer();
       setInterval(updateTimer, 1000);
     </script>
-    
 
+<script>
+  const correctPIN = "0405";  // <-- Cambia questo con il tuo PIN segreto
 
-    <!--<div class="container">
-    <div class="box">Contenuto 1</div>
-    <div class="box">Contenuto 2</div>
-    <div class="box">Contenuto 3</div>
-  </div>-->
+  function checkPIN() {
+    const enteredPIN = document.getElementById("pin-input").value;
+    const errorMsg = document.getElementById("error-msg");
+
+    if (enteredPIN === correctPIN) {
+      document.getElementById("pin-overlay").style.display = "none";
+    } else {
+      errorMsg.style.display = "block";
+    }
+  }
+</script>
+
 
   </body>
+
 </html>
